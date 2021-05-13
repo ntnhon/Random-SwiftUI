@@ -18,11 +18,18 @@ struct RootView: View {
                     Spacer()
                 }
             }
+
+            Section(header: Text("Apple clock")) {
+                HStack {
+                    Spacer()
+                    AppleClockView()
+                        .frame(width: 250, height: 250, alignment: .center)
+                    Spacer()
+                }
+            }
         }
     }
 }
-
-
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

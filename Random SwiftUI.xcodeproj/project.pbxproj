@@ -12,6 +12,7 @@
 		C07FA0472649BB3600D4D4B9 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07FA0462649BB3600D4D4B9 /* RootView.swift */; };
 		C07FA0492649BB3700D4D4B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C07FA0482649BB3700D4D4B9 /* Assets.xcassets */; };
 		C07FA04C2649BB3700D4D4B9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C07FA04B2649BB3700D4D4B9 /* Preview Assets.xcassets */; };
+		C0A7552F264C669100E03A35 /* AppleClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A7552E264C669100E03A35 /* AppleClockView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		C07FA0482649BB3700D4D4B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C07FA04B2649BB3700D4D4B9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C07FA04D2649BB3700D4D4B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C0A7552E264C669100E03A35 /* AppleClockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleClockView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 				C07FA0442649BB3600D4D4B9 /* Random_SwiftUIApp.swift */,
 				C07FA0462649BB3600D4D4B9 /* RootView.swift */,
 				C07E9B332649BCE900B54644 /* SpotifyNowPlayingView.swift */,
+				C0A7552E264C669100E03A35 /* AppleClockView.swift */,
 				C07FA0482649BB3700D4D4B9 /* Assets.xcassets */,
 				C07FA04D2649BB3700D4D4B9 /* Info.plist */,
 				C07FA04A2649BB3700D4D4B9 /* Preview Content */,
@@ -141,6 +144,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0A7552F264C669100E03A35 /* AppleClockView.swift in Sources */,
 				C07FA0472649BB3600D4D4B9 /* RootView.swift in Sources */,
 				C07FA0452649BB3600D4D4B9 /* Random_SwiftUIApp.swift in Sources */,
 				C07E9B342649BCE900B54644 /* SpotifyNowPlayingView.swift in Sources */,
