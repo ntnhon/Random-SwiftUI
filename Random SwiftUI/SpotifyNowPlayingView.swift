@@ -18,14 +18,14 @@ fileprivate struct TileView: View {
     @State private var currentStep = 0
     @State private var height: CGFloat = 0
     var body: some View {
-        GeometryReader { geometry in
+        GeometryReader { proxy in
             Rectangle()
                 .fill(Color.spotify)
-                .frame(width: geometry.size.width, height: height)
+                .frame(width: proxy.size.width, height: height)
                 .onAppear {
                     DispatchQueue.main.asyncAfter(deadline: .now() + delayedSeconds) { Timer.scheduledTimer(withTimeInterval: 0.25, repeats: true) { _ in
                             withAnimation {
-                                let fullHeight = geometry.size.height
+                                let fullHeight = proxy.size.height
                                 switch currentStep {
                                 case 0: height = fullHeight / 2
                                 case 1: height += fullHeight / 8
@@ -47,10 +47,10 @@ fileprivate struct TileView: View {
 
 struct SpotifyNowPlayingView: View {
     var body: some View {
-        GeometryReader { geometry in
-            let spacing = geometry.size.width / 40
-            let tileWidth = (geometry.size.width - spacing * 3) / 4
-            let tileHeight = geometry.size.height
+        GeometryReader { proxy in
+            let spacing = proxy.size.width / 40
+            let tileWidth = (proxy.size.width - spacing * 3) / 4
+            let tileHeight = proxy.size.height
             HStack(spacing: spacing) {
                 ForEach([0.0, 0.3, 0.1, 0.2], id: \.self) {
                     TileView(delayedSeconds: $0)

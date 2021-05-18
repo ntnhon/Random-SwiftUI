@@ -11,13 +11,13 @@ fileprivate struct NumberView: View {
     var text: String
     var angle: Angle
     var body: some View {
-        GeometryReader { geometry in
-            let width = geometry.size.width
-            let height = geometry.size.height
+        GeometryReader { proxy in
+            let width = proxy.size.width
+            let height = proxy.size.height
             let xOffset = CGFloat(cos(angle.radians)) * width / 2
             let yOffset = CGFloat(sin(angle.radians)) * height / 2
             Text(text)
-                .frame(width: geometry.size.width, height: geometry.size.height)
+                .frame(width: width, height: height)
                 .offset(x: xOffset, y: yOffset)
                 .foregroundColor(.black)
         }
@@ -30,19 +30,19 @@ fileprivate struct NeedleView: View {
     var type: Type = .hour
 
     var body: some View {
-        GeometryReader { geometry in
-            VStack(spacing: -geometry.size.height / 100) {
+        GeometryReader { proxy in
+            VStack(spacing: -proxy.size.height / 100) {
                 if type == .hour {
                     Spacer()
-                        .frame(height: geometry.size.height / 3)
+                        .frame(height: proxy.size.height / 3)
                 }
                 Rectangle()
                     .foregroundColor(.black)
-                    .cornerRadius(geometry.size.width / 2)
+                    .cornerRadius(proxy.size.width / 2)
                 Rectangle()
                     .foregroundColor(.black)
-                    .frame(width: geometry.size.width / 2,
-                           height: geometry.size.height / 6)
+                    .frame(width: proxy.size.width / 2,
+                           height: proxy.size.height / 6)
             }
         }
     }
@@ -56,14 +56,14 @@ struct AppleClockView: View {
     @State private var secondNeedleAngle = Angle(radians: .pi / 2)
 
     var body: some View {
-        GeometryReader { geometry in
+        GeometryReader { proxy in
             ZStack {
                 Color.black
-                    .cornerRadius(geometry.size.width / 4)
+                    .cornerRadius(proxy.size.width / 4)
 
                 Color.white
                     .clipShape(Circle())
-                    .padding(geometry.size.width / 15)
+                    .padding(proxy.size.width / 15)
 
                 Group {
                     NumberView(text: "12", angle: .init(radians: -.pi / 2))
@@ -73,7 +73,7 @@ struct AppleClockView: View {
                     NumberView(text: "4", angle: .init(radians: .pi / 6))
                     NumberView(text: "5", angle: .init(radians: .pi / 3))
                 }
-                .padding(geometry.size.width / 7)
+                .padding(proxy.size.width / 7)
 
                 Group {
                     NumberView(text: "6", angle: .init(radians: .pi / 2))
@@ -83,49 +83,49 @@ struct AppleClockView: View {
                     NumberView(text: "10", angle: .init(radians: -.pi * 5 / 6))
                     NumberView(text: "11", angle: .init(radians: -.pi * 2 / 3))
                 }
-                .padding(geometry.size.width / 7)
+                .padding(proxy.size.width / 7)
 
                 // Bottom most center dot
                 Color.black
                     .clipShape(Circle())
-                    .frame(width: geometry.size.width / 20,
-                           height: geometry.size.height / 20)
+                    .frame(width: proxy.size.width / 20,
+                           height: proxy.size.height / 20)
 
                 // Hour needle
                 NeedleView(type: .hour)
-                    .frame(width: geometry.size.width / 30,
-                           height: geometry.size.height * 2 / 5)
-                    .offset(x: 0, y: -geometry.size.height / 5)
+                    .frame(width: proxy.size.width / 30,
+                           height: proxy.size.height * 2 / 5)
+                    .offset(x: 0, y: -proxy.size.height / 5)
                     .rotationEffect(hourNeedleAngle)
 
                 // Minute needle
                 NeedleView(type: .minute)
-                    .frame(width: geometry.size.width / 30,
-                           height: geometry.size.height * 2 / 5)
-                    .offset(x: 0, y: -geometry.size.height / 5)
+                    .frame(width: proxy.size.width / 30,
+                           height: proxy.size.height * 2 / 5)
+                    .offset(x: 0, y: -proxy.size.height / 5)
                     .rotationEffect(minuteNeedleAngle)
 
                 // Second needle
                 Color.orange
-                    .frame(width: geometry.size.width / 75,
-                           height: geometry.size.height / 2)
-                    .cornerRadius(geometry.size.width / 60)
-                    .offset(x: 0, y: -geometry.size.height / 6)
+                    .frame(width: proxy.size.width / 75,
+                           height: proxy.size.height / 2)
+                    .cornerRadius(proxy.size.width / 60)
+                    .offset(x: 0, y: -proxy.size.height / 6)
                     .rotationEffect(secondNeedleAngle)
 
                 Color.orange
                     .clipShape(Circle())
-                    .frame(width: geometry.size.width / 30,
-                           height: geometry.size.height / 30)
+                    .frame(width: proxy.size.width / 30,
+                           height: proxy.size.height / 30)
 
                 // Above most center dot
                 Color.white
                     .clipShape(Circle())
-                    .frame(width: geometry.size.width / 60,
-                           height: geometry.size.height / 60)
+                    .frame(width: proxy.size.width / 60,
+                           height: proxy.size.height / 60)
 
             }
-            .font(.system(size: geometry.size.width / 10))
+            .font(.system(size: proxy.size.width / 10))
         }
         .onReceive(timer) { _ in
             let date = Date()
